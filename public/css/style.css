@@ -2,65 +2,25 @@
  * CSS styles for the Camptix-xml-csv plugin form and shortcode
  */
 
+.camptix-wceu-btns {
+	justify-content: center;
+}
+
 .camptix-form {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+	flex-direction: column;
 }
 
-.camptix-form label {
-  display: block;
-  margin-bottom: 10px;
+.camptix-form-item {
+	width: 100%;
+	padding-top: 1em;
 }
 
-.camptix-form input[type="text"],
-.camptix-form select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-bottom: 20px;
+.camptix_form_text {
+	font-size: 90%;
 }
 
-.camptix-form input[type="submit"] {
-  background-color: #0073aa;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.camptix-shortcode {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.camptix-shortcode label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.camptix-shortcode select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.camptix-shortcode input[type="submit"] {
-  background-color: #0073aa;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
+.camptix-error {
+	border: 2px solid red;
+	padding: 1em;
+	color: red;
 }

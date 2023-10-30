@@ -2,52 +2,65 @@
 /**
  * Plugin Name: Camptix XML CSV
  * Plugin URI: https://europe.wordcamp.org/
- * Description: A plugin that converts uploaded XML files to CSV format.
+ * Description: A plugin to converts uploaded XML files to CSV format and back again from CSV to XML. Based on idea and script from Pascal Casier (https://github.com/ePascalC).
  * Version: 1.0.0
- * Author: Carlos Longarela, WordCamp Europe
- * Author URI: https://europe.wordcamp.org/
+ * Author: Carlos Longarela <carlos@longarela.eu>, WordCamp Europe
+ * Author URI: https://tabernawp.com/
  * License: GPL2
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: camptix-xml-csv
+ * Domain Path: /languages
+ * Requires at least: 5.2
+ * Requires PHP: 7.4
+ * Tested up to: 6.3.2
+ *
+ * @package Camptix_XML_CSV
  */
-
-if ( ! function_exists('xml_parser') ) {
-	wp_die( __( 'Simplexml PHP extension not available. You need this extension available to use this plugin.', 'camptix-xml-csv' ) );
-}
 
 define( 'CAMPTIX_XML_CSV_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CAMPTIX_XML_CSV_URL', plugin_dir_url( __FILE__ ) );
 
-// Load the necessary files
-require_once CAMPTIX_XML_CSV_DIR . 'includes/csv-converter.php';
-require_once CAMPTIX_XML_CSV_DIR . 'includes/xml-parser.php';
 
 /**
  * Function to handle the form submission and display the CSV data.
  */
 function camptix_xml_csv_shortcode() {
-	// Check if the form was submitted
-	if ( isset( $_POST['submit'] ) ) {
-		// Get the uploaded file
-		$file = $_FILES['file'];
+	// Enqueue the CSS and JS files only when shortcode is used.
+	wp_enqueue_style( 'camptix-xml-csv-style', CAMPTIX_XML_CSV_URL . 'public/css/style.css' );
+	wp_enqueue_script( 'camptix-xml-csv-script', CAMPTIX_XML_CSV_URL . 'public/js/script.js', array(), '1.0.0', true );
 
-		// Check if the file is an XML file
-		if ( $file['type'] === 'text/xml' ) {
-			// Get the type of data to export
-			$type = $_POST['type'];
+	ob_start();
 
-			// Convert the XML file to CSV
-			$csv_converter = new CSV_Converter();
-			$csv_data = $csv_converter->convert_2_csv( $file['tmp_name'], $type );
-
-			// Display the CSV data
-			echo '<pre>' . $csv_data . '</pre>';
-		} else {
-			// Display an error message
-			echo '<p class="error">Please upload an XML file.</p>';
-		}
+	// Check if the form was submitted.
+	if ( isset( $_POST['file_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		include CAMPTIX_XML_CSV_DIR . 'includes/process-form.php';
 	}
 
-	// Display the form
-	include plugin_dir_path( __FILE__ ) . 'public/templates/form.php';
+	include CAMPTIX_XML_CSV_DIR . 'public/templates/form.php';
+
+	return ob_get_clean();
 }
-// Define the shortcode
+// Define the shortcode.
 add_shortcode( 'camptix_xml_csv', 'camptix_xml_csv_shortcode' );
+
+/**
+ * Function to handle the AJAX request to load the form to convert XML to CSV.
+ */
+function load_xml_2_csv_form() {
+	include CAMPTIX_XML_CSV_DIR . 'public/templates/form-xml-2-csv.php';
+
+	wp_die();
+}
+add_action( 'wp_ajax_load_xml_2_csv_form', 'load_xml_2_csv_form' );
+add_action( 'wp_ajax_nopriv_load_xml_2_csv_form', 'load_xml_2_csv_form' );
+
+/**
+ * Function to handle the AJAX request to load the form to convert CSV to XML.
+ */
+function load_csv_2_xml_form() {
+	include CAMPTIX_XML_CSV_DIR . 'public/templates/form-csv-2-xml.php';
+
+	wp_die();
+}
+add_action( 'wp_ajax_load_csv_2_xml_form', 'load_csv_2_xml_form' );
+add_action( 'wp_ajax_nopriv_load_csv_2_xml_form', 'load_csv_2_xml_form' );

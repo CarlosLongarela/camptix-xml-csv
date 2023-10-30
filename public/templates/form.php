@@ -1,13 +1,18 @@
-<div class="camptix-xml-csv-form">
-	<form method="post" enctype="multipart/form-data">
-		<label for="xml-file"><?php esc_html_e( 'Choose an XML file:', 'camptix-xml-csv' ); ?></label>
-		<input type="file" id="xml-file" name="xml_file" required>
-		<label for="data-type"><?php esc_html_e( 'Choose the data type:', 'camptix-xml-csv' ); ?></label>
-		<select id="data-type" name="data_type" required>
-			<option value="organizers"><?php esc_html_e( 'Organizers', 'camptix-xml-csv' ); ?></option>
-			<option value="volunteers"><?php esc_html_e( 'Volunteers', 'camptix-xml-csv' ); ?></option>
-			<option value="sponsors"><?php esc_html_e( 'Sponsors', 'camptix-xml-csv' ); ?></option>
-		</select>
-		<button type="submit"><?php esc_html_e( 'Export to CSV', 'camptix-xml-csv' ); ?></button>
-	</form>
+<?php
+/**
+ * Form to convert a XML file to CSV
+ *
+ * @package Camptix_XML_CSV
+ */
+
+?>
+<div class="wp-block-buttons is-layout-flex is-content-justification-center camptix-wceu-btns">
+	<div class="wp-block-button">
+		<a id="btn-convert-xml-2-csv" class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Convert XML to CSV', 'camptix-xml-csv' ); ?></a>
+	</div>
+	<div class="wp-block-button">
+		<a id="btn-convert-csv-2-xml" class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Convert CSV to XML', 'camptix-xml-csv' ); ?></a>
+	</div>
 </div>
+
+<div id="camptix-xml-csv-forms" class="camptix-xml-csv-forms"></div>
