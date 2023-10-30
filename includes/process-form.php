@@ -31,8 +31,6 @@ if ( 'xml_2_csv' === $_POST['file_type'] ) {
 
 require_once CAMPTIX_XML_CSV_DIR . 'includes/trait-common.php';
 
-//$common = new Camptix_Common();
-
 if ( $convert_2_csv ) {
 	require_once CAMPTIX_XML_CSV_DIR . 'includes/class-csv-converter.php';
 
@@ -44,7 +42,9 @@ if ( $convert_2_csv ) {
 
 	if ( false !== $data_type ) {
 		$csv_data = $converter->convert_2_csv( $data_type );
-		$converter->download_csv( $csv_data );
+		$csv_link = $converter->write_csv( $csv_data );
+		echo '<div class="camptix-success">' . esc_html__( 'CSV file created successfully:', 'camptix-xml-csv' ) . ' ';
+		echo '<a href="' . esc_url( CAMPTIX_XML_CSV_UPLOAD_URL . $csv_link ) . '" download>' . esc_html__( 'Download CSV file', 'camptix-xml-csv' ) . '</a></div>';
 	} else {
 		$res = new WP_Error( 'File type no XML', __( 'Please select a valid data type.', 'camptix-xml-csv' ) );
 		echo '<div class="camptix-error">' . esc_html( $res->get_error_message() ) . '</div>';

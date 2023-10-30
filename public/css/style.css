@@ -24,3 +24,9 @@
 	padding: 1em;
 	color: red;
 }
+
+.camptix-success {
+	border: 2px solid green;
+	padding: 1em;
+	color: green;
+}

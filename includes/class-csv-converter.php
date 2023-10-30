@@ -24,6 +24,13 @@ class Camptix_XML_CSV_Converter {
 	private $dom_document = null;
 
 	/**
+	 * DOM XPath object
+	 *
+	 * @var DOMXPath
+	 */
+	private $dom_xpath = null;
+
+	/**
 	 * Excerpt namespace
 	 *
 	 * @var string
@@ -81,6 +88,9 @@ class Camptix_XML_CSV_Converter {
 
 		$this->dom_document->preserveWhiteSpace = false;
 		$this->dom_document->loadXML( $xml_data );
+
+		$this->dom_xpath = new DOMXPath( $this->dom_document );
+		$this->dom_xpath->registerNamespace( 'wp', $this->ns_wp );
 	}
 
 	/**
@@ -119,7 +129,7 @@ class Camptix_XML_CSV_Converter {
 				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
 				break;
 			case 'wcb_speaker':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
+				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name' );
 				break;
 			case 'wcb_session':
 				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
@@ -128,7 +138,7 @@ class Camptix_XML_CSV_Converter {
 				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
 				break;
 			case 'wcb_sponsor':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
+				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'Company Name', 'Website', 'First Name', 'Last Name', 'Email Address', 'Phone Number', 'Street Address', 'City', 'State', 'Zip Code', 'Country' );
 				break;
 			default:
 				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
@@ -160,7 +170,15 @@ class Camptix_XML_CSV_Converter {
 				$csv_data = array( $title, $content, $excerpt, $post_name );
 				break;
 			case 'wcb_speaker':
-				$csv_data = array();
+				$title        = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;
+				$content      = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
+				$excerpt      = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
+				$post_name    = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
+				$user_email   = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcb_speaker_email']" )->item( 0 )->nodeValue;
+				$wp_user_name = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_user_name']" )->item( 0 )->nodeValue;
+
+				// Add CSV row.
+				$csv_data = array( $title, $content, $excerpt, $post_name, $user_email, $wp_user_name );
 				break;
 			case 'wcb_session':
 				$csv_data = array();
@@ -169,10 +187,24 @@ class Camptix_XML_CSV_Converter {
 				$csv_data = array();
 				break;
 			case 'wcb_sponsor':
-				$csv_data = array();
-				break;
-			default:
-				$csv_data = array();
+				$title           = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;
+				$content         = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
+				$excerpt         = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
+				$post_name       = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
+				$company_name    = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_company_name']" )->item( 0 )->nodeValue;
+				$website         = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_website']" )->item( 0 )->nodeValue;
+				$first_name      = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_first_name']" )->item( 0 )->nodeValue;
+				$last_name       = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_last_name']" )->item( 0 )->nodeValue;
+				$email_address   = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_email_address']" )->item( 0 )->nodeValue;
+				$phone_number    = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_phone_number']" )->item( 0 )->nodeValue;
+				$street_address1 = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_street_address1']" )->item( 0 )->nodeValue;
+				$city            = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_city']" )->item( 0 )->nodeValue;
+				$state           = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_state']" )->item( 0 )->nodeValue;
+				$zip_code        = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_zip_code']" )->item( 0 )->nodeValue;
+				$country         = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_country']" )->item( 0 )->nodeValue;
+
+				// Add CSV row.
+				$csv_data = array( $title, $content, $excerpt, $post_name, $company_name, $website, $first_name, $last_name, $email_address, $phone_number, $street_address1, $city, $state, $zip_code, $country );
 				break;
 		}
 
@@ -213,16 +245,15 @@ class Camptix_XML_CSV_Converter {
 	 *
 	 * @param string $csv_data CSV data to download.
 	 *
-	 * @return void
+	 * @return string
 	 */
-	public function download_csv( string $csv_data ) {
+	public function write_csv( string $csv_data ) {
 		$filename = 'camptix-' . gmdate( 'Y-m-d' ) . '.csv';
 
-		header( 'Content-Type: text/csv; charset=utf-8' );
-		header( 'Content-Disposition: attachment; filename=' . $filename );
+		$csv = fopen( CAMPTIX_XML_CSV_UPLOAD_DIR . $filename, 'w' ); // phpcs:ignore
+		fwrite( $csv, $csv_data ); // phpcs:ignore
+		fclose( $csv ); // phpcs:ignore
 
-		echo $csv_data; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-		exit;
+		return $filename;
 	}
 }
