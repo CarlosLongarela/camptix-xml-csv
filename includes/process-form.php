@@ -29,15 +29,15 @@ if ( 'xml_2_csv' === $_POST['file_type'] ) {
 	}
 }
 
-require_once CAMPTIX_XML_CSV_DIR . 'includes/trait-common.php';
+require_once CAMPTIX_XML_CSV_DIR . 'includes/trait-camptix-common.php';
 
 if ( $convert_2_csv ) {
-	require_once CAMPTIX_XML_CSV_DIR . 'includes/class-csv-converter.php';
+	require_once CAMPTIX_XML_CSV_DIR . 'includes/class-camptix-xml-2-csv-converter.php';
 
 	$xml_file    = $_FILES['xml_file']['tmp_name'];
 	$xml_content = file_get_contents( $xml_file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
-	$converter = new Camptix_XML_CSV_Converter( $xml_content );
+	$converter = new Camptix_XML_2_CSV_Converter( $xml_content );
 	$data_type = $converter->get_xml_type();
 
 	if ( false !== $data_type ) {
@@ -52,8 +52,8 @@ if ( $convert_2_csv ) {
 }
 
 if ( $convert_2_xml ) {
-	require_once CAMPTIX_XML_CSV_DIR . 'includes/class-xml-converter.php';
+	require_once CAMPTIX_XML_CSV_DIR . 'includes/class-camptix-csv-2-xml-converter.php';
 
 	$csv_file  = $_FILES['csv_file']['tmp_name'];
-	//$converter = new Camptix_CSV_XML_Converter();
+	$converter = new Camptix_CSV_2_XML_Converter();
 }

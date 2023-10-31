@@ -1,7 +1,7 @@
 <?php
 /**
- * This file exports a class CSV_Converter which has a method convert that takes an XML file path and returns a CSV string.
- * The class uses the xml_parser function to parse the XML file and extract the necessary data.
+ * This file exports a class Camptix_XML_2_CSV_Converter which has a method convert_2_csv that takes an XML file uploaded and saves a CSV file.
+ * The class uses the DOMDocument to parse the XML file and extract the necessary data.
  *
  * @package Camptix_XML_CSV
  */
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class CSV_Converter
  */
-class Camptix_XML_CSV_Converter {
+class Camptix_XML_2_CSV_Converter {
 	use Camptix_Common; // Use Common Trait.
 
 	/**
@@ -22,61 +22,6 @@ class Camptix_XML_CSV_Converter {
 	 * @var DOMDocument
 	 */
 	private $dom_document = null;
-
-	/**
-	 * DOM XPath object
-	 *
-	 * @var DOMXPath
-	 */
-	private $dom_xpath = null;
-
-	/**
-	 * Excerpt namespace
-	 *
-	 * @var string
-	 */
-	private $ns_excerpt = 'http://wordpress.org/export/1.2/excerpt/';
-
-	/**
-	 * Content namespace
-	 *
-	 * @var string
-	 */
-	private $ns_content = 'http://purl.org/rss/1.0/modules/content/';
-
-	/**
-	 * Comments namespace
-	 *
-	 * @var string
-	 */
-	private $ns_wfw = 'http://wellformedweb.org/CommentAPI/';
-
-	/**
-	 * Dc namespace
-	 *
-	 * @var string
-	 */
-	private $ns_dc = 'http://purl.org/dc/elements/1.1/';
-
-	/**
-	 * WordPress namespace
-	 *
-	 * @var string
-	 */
-	private $ns_wp = 'http://wordpress.org/export/1.2/';
-
-	/**
-	 * CPT Types
-	 *
-	 * @var array
-	 */
-	private $valid_cpt_types = array(
-		'wcb_organizer',
-		'wcb_speaker',
-		'wcb_session',
-		'wcb_volunteer',
-		'wcb_sponsor',
-	);
 
 	/**
 	 * CSV_Converter constructor.
@@ -88,9 +33,6 @@ class Camptix_XML_CSV_Converter {
 
 		$this->dom_document->preserveWhiteSpace = false;
 		$this->dom_document->loadXML( $xml_data );
-
-		$this->dom_xpath = new DOMXPath( $this->dom_document );
-		$this->dom_xpath->registerNamespace( 'wp', $this->ns_wp );
 	}
 
 	/**
@@ -157,7 +99,7 @@ class Camptix_XML_CSV_Converter {
 				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'Session Time', 'Session Duration in seconds', 'Session Type', 'Session Slides', 'Session Video', 'Session Speaker ID', 'Track', 'Track Nicename' );
 				break;
 			case 'wcb_volunteer':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
+				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'WP User Name', 'Volunteer Email', 'Is First Time' );
 				break;
 			case 'wcb_sponsor':
 				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'Company Name', 'Website', 'First Name', 'Last Name', 'Email Address', 'Phone Number', 'Street Address', 'City', 'State', 'Zip Code', 'Country' );
@@ -221,7 +163,16 @@ class Camptix_XML_CSV_Converter {
 				$csv_data = array( $title, $content, $excerpt, $post_name, $session_time, $session_duration, $session_type, $session_slides, $session_video, $session_speaker_id, $track, $track_nicename );
 				break;
 			case 'wcb_volunteer':
-				$csv_data = array();
+				$title           = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;
+				$content         = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
+				$excerpt         = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
+				$post_name       = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
+				$wp_user_name    = $this->get_post_meta( '_wcpt_user_name', $item );
+				$volunteer_email = $this->get_post_meta( '_wcb_volunteer_email', $item );
+				$is_first_time   = $this->get_post_meta( '_wcb_volunteer_first_time', $item );
+
+				// Add CSV row.
+				$csv_data = array( $title, $content, $excerpt, $post_name, $wp_user_name, $volunteer_email, $is_first_time );
 				break;
 			case 'wcb_sponsor':
 				$title           = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;

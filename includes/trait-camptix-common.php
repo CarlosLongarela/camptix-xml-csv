@@ -13,6 +13,54 @@
 trait Camptix_Common {
 
 	/**
+	 * WordPress namespace
+	 *
+	 * @var string
+	 */
+	protected $ns_wp = 'http://wordpress.org/export/1.2/';
+
+	/**
+	 * Excerpt namespace
+	 *
+	 * @var string
+	 */
+	protected $ns_excerpt = 'http://wordpress.org/export/1.2/excerpt/';
+
+	/**
+	 * Content namespace
+	 *
+	 * @var string
+	 */
+	protected $ns_content = 'http://purl.org/rss/1.0/modules/content/';
+
+	/**
+	 * Comments namespace
+	 *
+	 * @var string
+	 */
+	protected $ns_wfw = 'http://wellformedweb.org/CommentAPI/';
+
+	/**
+	 * Dc namespace
+	 *
+	 * @var string
+	 */
+	protected $ns_dc = 'http://purl.org/dc/elements/1.1/';
+
+	/**
+	 * CPT Types
+	 *
+	 * @var array
+	 */
+	private $valid_cpt_types = array(
+		'wcb_organizer',
+		'wcb_speaker',
+		'wcb_session',
+		'wcb_volunteer',
+		'wcb_sponsor',
+	);
+
+	/**
 	 * Return error associate with PHP upload error.
 	 *
 	 * @param string $file_error String with the file error constant.
