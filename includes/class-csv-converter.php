@@ -151,10 +151,10 @@ class Camptix_XML_CSV_Converter {
 				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
 				break;
 			case 'wcb_speaker':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name' );
+				$csv_headers = array( 'Speaker ID', 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name' );
 				break;
 			case 'wcb_session':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
+				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'Session Time', 'Session Duration in seconds', 'Session Type', 'Session Slides', 'Session Video', 'Session Speaker ID', 'Track', 'Track Nicename' );
 				break;
 			case 'wcb_volunteer':
 				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
@@ -192,6 +192,7 @@ class Camptix_XML_CSV_Converter {
 				$csv_data = array( $title, $content, $excerpt, $post_name );
 				break;
 			case 'wcb_speaker':
+				$speaker_id   = $item->getElementsByTagNameNS( $this->ns_wp, 'post_id' )->item( 0 )->nodeValue;
 				$title        = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;
 				$content      = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
 				$excerpt      = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
@@ -200,10 +201,24 @@ class Camptix_XML_CSV_Converter {
 				$wp_user_name = $this->get_post_meta( '_wcpt_user_name', $item );
 
 				// Add CSV row.
-				$csv_data = array( $title, $content, $excerpt, $post_name, $user_email, $wp_user_name );
+				$csv_data = array( $speaker_id, $title, $content, $excerpt, $post_name, $user_email, $wp_user_name );
 				break;
 			case 'wcb_session':
-				$csv_data = array();
+				$title              = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;
+				$content            = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
+				$excerpt            = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
+				$post_name          = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
+				$session_time       = $this->get_post_meta( '_wcpt_session_time', $item );
+				$session_duration   = $this->get_post_meta( '_wcpt_session_duration', $item );
+				$session_type       = $this->get_post_meta( '_wcpt_session_type', $item );
+				$session_slides     = $this->get_post_meta( '_wcpt_session_slides', $item );
+				$session_video      = $this->get_post_meta( '_wcpt_session_video', $item );
+				$session_speaker_id = $this->get_post_meta( '_wcpt_speaker_id', $item );
+				$track              = $item->getElementsByTagName( 'category' )->item( 0 )->nodeValue;
+				$track_nicename     = $item->getElementsByTagName( 'category' )->item( 0 )->getAttribute( 'nicename' );
+
+				// Add CSV row.
+				$csv_data = array( $title, $content, $excerpt, $post_name, $session_time, $session_duration, $session_type, $session_slides, $session_video, $session_speaker_id, $track, $track_nicename );
 				break;
 			case 'wcb_volunteer':
 				$csv_data = array();
