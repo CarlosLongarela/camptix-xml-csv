@@ -42,7 +42,7 @@ if ( $convert_2_csv ) {
 
 	if ( false !== $data_type ) {
 		$csv_data = $converter->convert_2_csv( $data_type );
-		$csv_link = $converter->write_csv( $csv_data );
+		$csv_link = $converter->write_csv( $csv_data, $data_type );
 		echo '<div class="camptix-success">' . esc_html__( 'CSV file created successfully:', 'camptix-xml-csv' ) . ' ';
 		echo '<a href="' . esc_url( CAMPTIX_XML_CSV_UPLOAD_URL . $csv_link ) . '" download>' . esc_html__( 'Download CSV file', 'camptix-xml-csv' ) . '</a></div>';
 	} else {

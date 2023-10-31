@@ -115,6 +115,28 @@ class Camptix_XML_CSV_Converter {
 	}
 
 	/**
+	 * Get post meta value.
+	 *
+	 * @param string $meta_key Meta key to search.
+	 * @param object $item     DOM object with data.
+	 *
+	 * @return string
+	 */
+	private function get_post_meta( string $meta_key, $item ) {
+
+		$post_meta = $item->getElementsByTagNameNS( $this->ns_wp, 'postmeta' );
+
+		foreach ( $post_meta as $meta ) {
+			$meta_key_node = $meta->getElementsByTagNameNS( $this->ns_wp, 'meta_key' )->item( 0 )->nodeValue;
+
+			if ( $meta_key === $meta_key_node ) {
+				return $meta->getElementsByTagNameNS( $this->ns_wp, 'meta_value' )->item( 0 )->nodeValue;
+			}
+		}
+		return '';
+	}
+
+	/**
 	 * Return CSV headers based on the type.
 	 *
 	 * @param string $data_type XML data type.
@@ -156,7 +178,7 @@ class Camptix_XML_CSV_Converter {
 	 *
 	 * @return array
 	 */
-	private function csv_data( $item, $data_type ) {
+	private function get_csv_data( $item, $data_type ) {
 		$csv_data = array();
 
 		switch ( $data_type ) {
@@ -174,8 +196,8 @@ class Camptix_XML_CSV_Converter {
 				$content      = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
 				$excerpt      = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
 				$post_name    = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
-				$user_email   = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcb_speaker_email']" )->item( 0 )->nodeValue;
-				$wp_user_name = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_user_name']" )->item( 0 )->nodeValue;
+				$user_email   = $this->get_post_meta( '_wcb_speaker_email', $item );
+				$wp_user_name = $this->get_post_meta( '_wcpt_user_name', $item );
 
 				// Add CSV row.
 				$csv_data = array( $title, $content, $excerpt, $post_name, $user_email, $wp_user_name );
@@ -191,17 +213,17 @@ class Camptix_XML_CSV_Converter {
 				$content         = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
 				$excerpt         = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
 				$post_name       = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
-				$company_name    = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_company_name']" )->item( 0 )->nodeValue;
-				$website         = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_website']" )->item( 0 )->nodeValue;
-				$first_name      = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_first_name']" )->item( 0 )->nodeValue;
-				$last_name       = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_last_name']" )->item( 0 )->nodeValue;
-				$email_address   = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_email_address']" )->item( 0 )->nodeValue;
-				$phone_number    = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_phone_number']" )->item( 0 )->nodeValue;
-				$street_address1 = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_street_address1']" )->item( 0 )->nodeValue;
-				$city            = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_city']" )->item( 0 )->nodeValue;
-				$state           = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_state']" )->item( 0 )->nodeValue;
-				$zip_code        = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_zip_code']" )->item( 0 )->nodeValue;
-				$country         = $this->dom_xpath->query( "//wp:postmeta[wp:meta_key='_wcpt_sponsor_country']" )->item( 0 )->nodeValue;
+				$company_name    = $this->get_post_meta( '_wcpt_sponsor_company_name', $item );
+				$website         = $this->get_post_meta( '_wcpt_sponsor_website', $item );
+				$first_name      = $this->get_post_meta( '_wcpt_sponsor_first_name', $item );
+				$last_name       = $this->get_post_meta( '_wcpt_sponsor_last_name', $item );
+				$email_address   = $this->get_post_meta( '_wcpt_sponsor_email_address', $item );
+				$phone_number    = $this->get_post_meta( '_wcpt_sponsor_phone_number', $item );
+				$street_address1 = $this->get_post_meta( '_wcpt_sponsor_street_address1', $item );
+				$city            = $this->get_post_meta( '_wcpt_sponsor_city', $item );
+				$state           = $this->get_post_meta( '_wcpt_sponsor_state', $item );
+				$zip_code        = $this->get_post_meta( '_wcpt_sponsor_zip_code', $item );
+				$country         = $this->get_post_meta( '_wcpt_sponsor_country', $item );
 
 				// Add CSV row.
 				$csv_data = array( $title, $content, $excerpt, $post_name, $company_name, $website, $first_name, $last_name, $email_address, $phone_number, $street_address1, $city, $state, $zip_code, $country );
@@ -228,7 +250,7 @@ class Camptix_XML_CSV_Converter {
 		$item_nodes = $this->dom_document->getElementsByTagName( 'item' );
 
 		foreach ( $item_nodes as $item ) {
-			$csv_data = $this->csv_data( $item, $data_type );
+			$csv_data = $this->get_csv_data( $item, $data_type );
 
 			fputcsv( $csv_file, $csv_data );
 		}
@@ -243,12 +265,13 @@ class Camptix_XML_CSV_Converter {
 	/**
 	 * Download CSV file.
 	 *
-	 * @param string $csv_data CSV data to download.
+	 * @param string $csv_data  CSV data to download.
+	 * @param string $data_type XML data type.
 	 *
 	 * @return string
 	 */
-	public function write_csv( string $csv_data ) {
-		$filename = 'camptix-' . gmdate( 'Y-m-d' ) . '.csv';
+	public function write_csv( string $csv_data, string $data_type ) {
+		$filename = 'camptix-' . $data_type . '-' . gmdate( 'Y-m-d' ) . '.csv';
 
 		$csv = fopen( CAMPTIX_XML_CSV_UPLOAD_DIR . $filename, 'w' ); // phpcs:ignore
 		fwrite( $csv, $csv_data ); // phpcs:ignore
