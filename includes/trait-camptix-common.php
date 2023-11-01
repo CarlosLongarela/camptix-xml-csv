@@ -72,7 +72,7 @@ trait Camptix_Common {
 	 *
 	 * @var array
 	 */
-	protected $csv_headers_wcb_speaker = array( 'Speaker ID', 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name' );
+	protected $csv_headers_wcb_speaker = array( 'Speaker ID', 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name', 'Is First Time' );
 
 	/**
 	 * CSV hedaers por CPT wcb_session.

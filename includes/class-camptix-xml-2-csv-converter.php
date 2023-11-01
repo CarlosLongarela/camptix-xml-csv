@@ -138,9 +138,10 @@ class Camptix_XML_2_CSV_Converter {
 				$post_name    = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
 				$user_email   = $this->get_post_meta( '_wcb_speaker_email', $item );
 				$wp_user_name = $this->get_post_meta( '_wcpt_user_name', $item );
+				$is_first     = $this->get_post_meta( '_wcb_speaker_first_time', $item ); // _wcb_speaker_first_time
 
 				// Add CSV row.
-				$csv_data = array( $speaker_id, $title, $content, $excerpt, $post_name, $user_email, $wp_user_name );
+				$csv_data = array( $speaker_id, $title, $content, $excerpt, $post_name, $user_email, $wp_user_name, $is_first );
 				break;
 			case 'wcb_session':
 				$title              = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;
