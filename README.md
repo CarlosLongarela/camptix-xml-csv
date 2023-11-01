@@ -1,4 +1,4 @@
-# WordCamp plugin to convert exported XML to CSV
+# WordCamp plugin to convert exported XML to CSV and again to XML
 
 You can export Speakers, Sessions, Sponsors, Organizers and Volunteers, from `WordPress admin, Tools -> Export` to obtain the WordPress eXtended RSS (WXR file) to convert to CSV.
 
@@ -9,3 +9,13 @@ Thereafter, you can convert again this CSV to XML (WXR format) to import it to t
 Use the shortcode `[camptix_xml_csv]` in the page or post where you'll like to show the converter. That's all.
 
 If you prefer to maintain it private, protect the post with a password or make it available only to admins (by example, with a page in draft mode).
+
+**NOTE:**
+
+* Do not change the exported filename because the system will detect the type of CPT (`wcb_organizer`, `wcb_speaker`, `wcb_session`, `wcb_volunteer`, `wcb_sponsor`) based on the file name portion. For example: camptix-**wcb_organizer**-2023-11-01.csv
+
+* Do not change CSV fields order or re-convert to XML will produce wrong data.
+
+* Test in a local environment before making in live site.
+
+* Make a backup or a full WXR export before any change.

@@ -56,7 +56,6 @@ if ( $convert_2_xml ) {
 
 	$csv_file      = $_FILES['csv_file']['tmp_name'];
 	$csv_file_name = $_FILES['csv_file']['name'];
-	//$csv_content   = file_get_contents( $csv_file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
 	$converter = new Camptix_CSV_2_XML_Converter();
 	$data_type = $converter->get_csv_type( $csv_file_name );

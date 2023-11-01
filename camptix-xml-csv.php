@@ -25,6 +25,16 @@ define( 'CAMPTIX_XML_CSV_UPLOAD_URL', $upload_dir['baseurl'] . '/camptix-xml-csv
 define( 'CAMPTIX_XML_CSV_VERSION', '1.0.0' );
 
 /**
+ * Load the plugin textdomain.
+ *
+ * @return void
+ */
+function camptix_xml_csv_load_textdomain() {
+	load_plugin_textdomain( 'camptix-xml-csv', false, basename( __DIR__ ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'camptix_xml_csv_load_textdomain' );
+
+/**
  * Create the custom folder to store the CSV and XML files if not exists.
  *
  * @return void

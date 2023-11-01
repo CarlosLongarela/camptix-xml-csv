@@ -1,34 +1,22 @@
 document.addEventListener( 'DOMContentLoaded', function() {
 	const btn_convert_xml_2_csv = document.getElementById( 'btn-convert-xml-2-csv' );
 	const btn_convert_csv_2_xml = document.getElementById( 'btn-convert-csv-2-xml' );
-	const camptix_xml_csv_forms = document.getElementById( 'camptix-xml-csv-forms' );
+	const form_camptix_csv_xml  = document.getElementById( 'camptix-csv-xml-form' );
+	const form_camptix_xml_csv  = document.getElementById( 'camptix-xml-csv-form' );
+
+	function hide_forms() {
+		form_camptix_csv_xml.classList.add( 'camptix-hidden' );
+		form_camptix_xml_csv.classList.add( 'camptix-hidden' );
+	}
 
 	btn_convert_xml_2_csv.addEventListener( 'click', function() {
-		fetch('/wp-admin/admin-ajax.php?action=load_xml_2_csv_form', {
-			method: 'GET',
-			headers: {
-				'X-Requested-With': 'XMLHttpRequest'
-			}
-		} )
-			.then( response => response.text() )
-			.then( data => {
-				camptix_xml_csv_forms.innerHTML = data;
-		} )
-			.catch( error => console.error( error ) );
+		hide_forms();
+		form_camptix_xml_csv.classList.remove( 'camptix-hidden' );
 	} );
 
 	btn_convert_csv_2_xml.addEventListener( 'click', function() {
-		fetch('/wp-admin/admin-ajax.php?action=load_csv_2_xml_form', {
-			method: 'GET',
-			headers: {
-				'X-Requested-With': 'XMLHttpRequest'
-			}
-		} )
-			.then( response => response.text() )
-			.then( data => {
-				camptix_xml_csv_forms.innerHTML = data;
-		} )
-			.catch( error => console.error( error ) );
+		hide_forms();
+		form_camptix_csv_xml.classList.remove( 'camptix-hidden' );
 	} );
 
 } );

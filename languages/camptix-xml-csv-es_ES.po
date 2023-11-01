@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camptix XML CSV\n"
-"POT-Creation-Date: 2023-11-01 19:56+0100\n"
-"PO-Revision-Date: 2023-11-01 20:01+0100\n"
+"POT-Creation-Date: 2023-11-01 22:56+0100\n"
+"PO-Revision-Date: 2023-11-01 22:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -44,15 +44,15 @@ msgstr "Descargar archivo CSV"
 msgid "Please select a valid data type."
 msgstr "Por favor, selecciona un tipo de datos válido."
 
-#: includes/process-form.php:67
+#: includes/process-form.php:66
 msgid "XML file created successfully:"
 msgstr "Archivo XML creado correctamente:"
 
-#: includes/process-form.php:68
+#: includes/process-form.php:67
 msgid "Download XML file"
 msgstr "Descargar archivo XML"
 
-#: includes/process-form.php:70
+#: includes/process-form.php:69
 msgid "Please select a valid CSV file. Check plugin README for valid names."
 msgstr ""
 "Por favor, selecciona un archivo CSV válido. Comprueba el plugin README para "
@@ -98,19 +98,19 @@ msgstr "Error de subida desconocida"
 msgid "File is not a uploaded file"
 msgstr "El archivo no es un archivo cargado"
 
-#: public/templates/form-csv-2-xml.php:17
+#: public/templates/form-csv-2-xml.php:17 public/templates/form.php:28
 msgid ""
 "Convert a CSV from Google Spreadsheets, Excel, Libre Office Calc or similar "
-"tou import in WordPress."
+"to import in WordPress."
 msgstr ""
 "Convierte un CSV de hojas de cálculo de Google, Excel, Libre Office Calc o "
 "similar para importarlo en WordPress."
 
-#: public/templates/form-csv-2-xml.php:20
+#: public/templates/form-csv-2-xml.php:20 public/templates/form.php:31
 msgid "Choose an CSV file:"
 msgstr "Selecciona un archivo CSV:"
 
-#: public/templates/form-csv-2-xml.php:25
+#: public/templates/form-csv-2-xml.php:25 public/templates/form.php:36
 msgid "Export to XML"
 msgstr "Exportar a XML"
 

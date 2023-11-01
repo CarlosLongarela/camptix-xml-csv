@@ -30,3 +30,7 @@
 	padding: 1em;
 	color: green;
 }
+
+.camptix-hidden {
+	display: none;
+}
