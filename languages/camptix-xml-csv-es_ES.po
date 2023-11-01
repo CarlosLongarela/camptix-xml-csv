@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Camptix XML CSV\n"
+"POT-Creation-Date: 2023-11-01 19:56+0100\n"
+"PO-Revision-Date: 2023-11-01 20:01+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: camptix-xml-csv.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: includes/process-form.php:10
+msgid "Security check failed."
+msgstr "La comprobación de seguridad ha fallado."
+
+#: includes/process-form.php:20
+msgid "Please upload an XML file."
+msgstr "Por favor, carga un archivo XML."
+
+#: includes/process-form.php:27
+msgid "Please upload an CSV file."
+msgstr "Por favor, carga un archivo CSV."
+
+#: includes/process-form.php:46
+msgid "CSV file created successfully:"
+msgstr "Archivo CSV creado correctamente:"
+
+#: includes/process-form.php:47
+msgid "Download CSV file"
+msgstr "Descargar archivo CSV"
+
+#: includes/process-form.php:49
+msgid "Please select a valid data type."
+msgstr "Por favor, selecciona un tipo de datos válido."
+
+#: includes/process-form.php:67
+msgid "XML file created successfully:"
+msgstr "Archivo XML creado correctamente:"
+
+#: includes/process-form.php:68
+msgid "Download XML file"
+msgstr "Descargar archivo XML"
+
+#: includes/process-form.php:70
+msgid "Please select a valid CSV file. Check plugin README for valid names."
+msgstr ""
+"Por favor, selecciona un archivo CSV válido. Comprueba el plugin README para "
+"ver si los nombres son válidos."
+
+#: includes/trait-camptix-common.php:108
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr "El archivo subido excede la directiva upload_max_filesize en php.ini"
+
+#: includes/trait-camptix-common.php:111
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form"
+msgstr ""
+"El archivo cargado excede la directiva MAX_FILE_SIZE especificada en el "
+"formulario HTML"
+
+#: includes/trait-camptix-common.php:114
+msgid "The uploaded file was only partially uploaded"
+msgstr "El archivo cargado sólo fue parcialmente subido"
+
+#: includes/trait-camptix-common.php:117
+msgid "No file was uploaded"
+msgstr "No se subió ningún archivo"
+
+#: includes/trait-camptix-common.php:120
+msgid "Missing a temporary folder"
+msgstr "Falta una carpeta temporal"
+
+#: includes/trait-camptix-common.php:123
+msgid "Failed to write file to disk"
+msgstr "Fallo al escribir el archivo en disco"
+
+#: includes/trait-camptix-common.php:126
+msgid "File upload stopped by extension"
+msgstr "Carga de archivos detenida por extensión"
+
+#: includes/trait-camptix-common.php:129
+msgid "Unknown upload error"
+msgstr "Error de subida desconocida"
+
+#: includes/trait-camptix-common.php:149
+msgid "File is not a uploaded file"
+msgstr "El archivo no es un archivo cargado"
+
+#: public/templates/form-csv-2-xml.php:17
+msgid ""
+"Convert a CSV from Google Spreadsheets, Excel, Libre Office Calc or similar "
+"tou import in WordPress."
+msgstr ""
+"Convierte un CSV de hojas de cálculo de Google, Excel, Libre Office Calc o "
+"similar para importarlo en WordPress."
+
+#: public/templates/form-csv-2-xml.php:20
+msgid "Choose an CSV file:"
+msgstr "Selecciona un archivo CSV:"
+
+#: public/templates/form-csv-2-xml.php:25
+msgid "Export to XML"
+msgstr "Exportar a XML"
+
+#: public/templates/form-xml-2-csv.php:17
+msgid ""
+"Convert a XML file downloaded from WordPress export option and convert it to "
+"CSV to edit with Google Spreadsheets, Excel, Libre Office Calc or similar."
+msgstr ""
+"Convierte un archivo XML descargado de la opción de exportación de WordPress "
+"y lo convierte a CSV para editarlo con hojas de cálculo de Google, Excel, "
+"Libre, Office Calc o similar."
+
+#: public/templates/form-xml-2-csv.php:20
+msgid "Choose an XML file:"
+msgstr "Selecciona un archivo XML:"
+
+#: public/templates/form-xml-2-csv.php:25
+msgid "Export to CSV"
+msgstr "Exportar a CSV"
+
+#: public/templates/form.php:11
+msgid "Convert XML to CSV"
+msgstr "Convertir XML a CSV"
+
+#: public/templates/form.php:14
+msgid "Convert CSV to XML"
+msgstr "Convertir CSV a XML"
+
+#. Plugin Name of the plugin/theme
+msgid "Camptix XML CSV"
+msgstr "Camptix XML CSV"
+
+#. Plugin URI of the plugin/theme
+msgid "https://europe.wordcamp.org/"
+msgstr "https://europe.wordcamp.org/"
+
+#. Description of the plugin/theme
+msgid ""
+"A plugin to converts uploaded XML files to CSV format and back again from "
+"CSV to XML. Based on idea and script from Pascal Casier (https://github.com/"
+"ePascalC)."
+msgstr ""
+"Un plugin para convertir los archivos XML cargados a formato CSV y viceversa "
+"de CSV a XML. Basado en la idea y el script de Pascal Casier (https://github."
+"com/ePascalC)."
+
+#. Author of the plugin/theme
+msgid "Carlos Longarela <carlos@longarela.eu>, WordCamp Europe"
+msgstr "Carlos Longarela <carlos@longarela.eu>, WordCamp Europa"
+
+#. Author URI of the plugin/theme
+msgid "https://tabernawp.com/"
+msgstr "https://tabernawp.com/"
