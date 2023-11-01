@@ -21,3 +21,19 @@ If you prefer to maintain it private, protect the post with a password or make i
 * Test in a local environment before making in live site.
 
 * Make a backup or a full WXR export before any change.
+
+**CSV Data:**
+
+CSV headers are defined in `trait-camptix-common.php` file and are:
+
+* CPT wcb_organizer: `'Title', 'Content', 'Excerpt', 'Post Name'`
+
+* CPT wcb_speaker: `'Speaker ID', 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name', 'Is First Time'`
+
+* CPT wcb_session: `'Title', 'Content', 'Excerpt', 'Post Name', 'Session Time', 'Session Duration in seconds', 'Session Type', 'Session Slides', 'Session Video', 'Session Speaker ID', 'Track', 'Track Nicename'`
+
+* CPT wcb_volunteer: `'Title', 'Content', 'Excerpt', 'Post Name', 'WP User Name', 'Volunteer Email', 'Is First Time'`
+
+* CPT wcb_sponsor: `'Title', 'Content', 'Excerpt', 'Post Name', 'Company Name', 'Website', 'First Name', 'Last Name', 'Email Address', 'Phone Number', 'Street Address', 'City', 'State', 'Zip Code', 'Country'`
+
+Any change in headers will also be made on corresponding methods on both classes (class to convert *XML -> CSV* and class to convert *CSV -> XML*)
