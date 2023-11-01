@@ -52,13 +52,48 @@ trait Camptix_Common {
 	 *
 	 * @var array
 	 */
-	private $valid_cpt_types = array(
+	protected $valid_cpt_types = array(
 		'wcb_organizer',
 		'wcb_speaker',
 		'wcb_session',
 		'wcb_volunteer',
 		'wcb_sponsor',
 	);
+
+	/**
+	 * CSV hedaers por CPT wcb_organizer.
+	 *
+	 * @var array
+	 */
+	protected $csv_headers_wcb_organizer = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
+
+	/**
+	 * CSV hedaers por CPT wcb_speaker.
+	 *
+	 * @var array
+	 */
+	protected $csv_headers_wcb_speaker = array( 'Speaker ID', 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name' );
+
+	/**
+	 * CSV hedaers por CPT wcb_session.
+	 *
+	 * @var array
+	 */
+	protected $csv_headers_wcb_session = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'Session Time', 'Session Duration in seconds', 'Session Type', 'Session Slides', 'Session Video', 'Session Speaker ID', 'Track', 'Track Nicename' );
+
+	/**
+	 * CSV hedaers por CPT wcb_volunteer.
+	 *
+	 * @var array
+	 */
+	protected $csv_headers_wcb_volunteer = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'WP User Name', 'Volunteer Email', 'Is First Time' );
+
+	/**
+	 * CSV hedaers por CPT wcb_sponsor.
+	 *
+	 * @var array
+	 */
+	protected $csv_headers_wcb_sponsor = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'Company Name', 'Website', 'First Name', 'Last Name', 'Email Address', 'Phone Number', 'Street Address', 'City', 'State', 'Zip Code', 'Country' );
 
 	/**
 	 * Return error associate with PHP upload error.

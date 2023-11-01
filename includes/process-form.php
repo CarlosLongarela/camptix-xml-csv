@@ -54,6 +54,20 @@ if ( $convert_2_csv ) {
 if ( $convert_2_xml ) {
 	require_once CAMPTIX_XML_CSV_DIR . 'includes/class-camptix-csv-2-xml-converter.php';
 
-	$csv_file  = $_FILES['csv_file']['tmp_name'];
+	$csv_file      = $_FILES['csv_file']['tmp_name'];
+	$csv_file_name = $_FILES['csv_file']['name'];
+	//$csv_content   = file_get_contents( $csv_file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+
 	$converter = new Camptix_CSV_2_XML_Converter();
+	$data_type = $converter->get_csv_type( $csv_file_name );
+
+	if ( false !== $data_type ) {
+		$xml_data = $converter->convert_2_xml( $csv_file, $data_type );
+		//$xml_link = $converter->write_xml( $xml_data, $data_type );
+		//echo '<div class="camptix-success">' . esc_html__( 'XML file created successfully:', 'camptix-xml-csv' ) . ' ';
+		//echo '<a href="' . esc_url( CAMPTIX_XML_CSV_UPLOAD_URL . $xml_link ) . '" download>' . esc_html__( 'Download XML file', 'camptix-xml-csv' ) . '</a></div>';
+	} else {
+		$res = new WP_Error( 'CSV file name incorrect', __( 'Please select a valid CSV file. Check plugin README for valid names.', 'camptix-xml-csv' ) );
+		echo '<div class="camptix-error">' . esc_html( $res->get_error_message() ) . '</div>';
+	}
 }

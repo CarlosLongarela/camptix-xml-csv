@@ -90,22 +90,19 @@ class Camptix_XML_2_CSV_Converter {
 
 		switch ( $data_type ) {
 			case 'wcb_organizer':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
+				$csv_headers = $this->csv_headers_wcb_organizer;
 				break;
 			case 'wcb_speaker':
-				$csv_headers = array( 'Speaker ID', 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name' );
+				$csv_headers = $this->csv_headers_wcb_speaker;
 				break;
 			case 'wcb_session':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'Session Time', 'Session Duration in seconds', 'Session Type', 'Session Slides', 'Session Video', 'Session Speaker ID', 'Track', 'Track Nicename' );
+				$csv_headers = $this->csv_headers_wcb_session;
 				break;
 			case 'wcb_volunteer':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'WP User Name', 'Volunteer Email', 'Is First Time' );
+				$csv_headers = $this->csv_headers_wcb_volunteer;
 				break;
 			case 'wcb_sponsor':
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name', 'Company Name', 'Website', 'First Name', 'Last Name', 'Email Address', 'Phone Number', 'Street Address', 'City', 'State', 'Zip Code', 'Country' );
-				break;
-			default:
-				$csv_headers = array( 'Title', 'Content', 'Excerpt', 'Post Name' );
+				$csv_headers = $this->csv_headers_wcb_sponsor;
 				break;
 		}
 
@@ -198,6 +195,7 @@ class Camptix_XML_2_CSV_Converter {
 
 		return $csv_data;
 	}
+
 	/**
 	 * Convert XML to CSV.
 	 *
@@ -229,9 +227,9 @@ class Camptix_XML_2_CSV_Converter {
 	}
 
 	/**
-	 * Download CSV file.
+	 * Write CSV file.
 	 *
-	 * @param string $csv_data  CSV data to download.
+	 * @param string $csv_data  CSV data to write to file.
 	 * @param string $data_type XML data type.
 	 *
 	 * @return string
