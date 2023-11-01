@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camptix XML CSV\n"
-"POT-Creation-Date: 2023-11-01 23:36+0100\n"
-"PO-Revision-Date: 2023-11-01 23:36+0100\n"
+"POT-Creation-Date: 2023-11-01 23:42+0100\n"
+"PO-Revision-Date: 2023-11-01 23:48+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es_ES\n"
+"Language: gl_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,122 +22,122 @@ msgstr ""
 
 #: includes/process-form.php:10
 msgid "Security check failed."
-msgstr "La comprobación de seguridad ha fallado."
+msgstr "Fallou a comprobación de seguridade."
 
 #: includes/process-form.php:20
 msgid "Please upload an XML file."
-msgstr "Por favor, carga un archivo XML."
+msgstr "Por favor, suba un ficheiro XML."
 
 #: includes/process-form.php:27
 msgid "Please upload an CSV file."
-msgstr "Por favor, carga un archivo CSV."
+msgstr "Por favor, suba un ficheiro CSV."
 
 #: includes/process-form.php:46
 msgid "CSV file created successfully:"
-msgstr "Archivo CSV creado correctamente:"
+msgstr "Ficheiro CSV creado correctamente:"
 
 #: includes/process-form.php:47
 msgid "Download CSV file"
-msgstr "Descargar archivo CSV"
+msgstr "Descargar ficheiro CSV"
 
 #: includes/process-form.php:49
 msgid "Please select a valid data type."
-msgstr "Por favor, selecciona un tipo de datos válido."
+msgstr "Por favor, seleccione un tipo de datos válido."
 
 #: includes/process-form.php:66
 msgid "XML file created successfully:"
-msgstr "Archivo XML creado correctamente:"
+msgstr "Ficheiro XML creado correctamente:"
 
 #: includes/process-form.php:67
 msgid "Download XML file"
-msgstr "Descargar archivo XML"
+msgstr "Descargar ficheiro XML"
 
 #: includes/process-form.php:69
 msgid "Please select a valid CSV file. Check plugin README for valid names."
 msgstr ""
-"Por favor, selecciona un archivo CSV válido. Comprueba el README del plugin "
-"para ver si los nombres son válidos."
+"Selecciona un ficheiro CSV válido. Comprobe o plugin README para nomes "
+"válidos."
 
 #: includes/trait-camptix-common.php:108
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr "El archivo subido excede la directiva upload_max_filesize en php.ini"
+msgstr "O ficheiro subido excede a directiva upload_max_filesize en php.ini"
 
 #: includes/trait-camptix-common.php:111
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
-"El archivo cargado excede la directiva MAX_FILE_SIZE especificada en el "
+"O ficheiro cargado excede a directiva MAX_FILE_SIZE especificada no "
 "formulario HTML"
 
 #: includes/trait-camptix-common.php:114
 msgid "The uploaded file was only partially uploaded"
-msgstr "El archivo cargado sólo fue parcialmente subido"
+msgstr "O ficheiro foi subido só parcialmente"
 
 #: includes/trait-camptix-common.php:117
 msgid "No file was uploaded"
-msgstr "No se subió ningún archivo"
+msgstr "Non se cargou ningún ficheiro"
 
 #: includes/trait-camptix-common.php:120
 msgid "Missing a temporary folder"
-msgstr "Falta una carpeta temporal"
+msgstr "Falta unha carpeta temporal"
 
 #: includes/trait-camptix-common.php:123
 msgid "Failed to write file to disk"
-msgstr "Fallo al escribir el archivo en disco"
+msgstr "Non se puido escribir o ficheiro no disco"
 
 #: includes/trait-camptix-common.php:126
 msgid "File upload stopped by extension"
-msgstr "Carga de archivos detenida por extensión"
+msgstr "Carga de ficheiros parada pola extensión"
 
 #: includes/trait-camptix-common.php:129
 msgid "Unknown upload error"
-msgstr "Error de subida desconocida"
+msgstr "Erro de carga descoñecido"
 
 #: includes/trait-camptix-common.php:149
 msgid "File is not a uploaded file"
-msgstr "El archivo no es un archivo cargado"
+msgstr "O ficheiro non é un ficheiro cargado"
 
 #: public/templates/form.php:11
 msgid "Convert XML to CSV"
-msgstr "Convertir XML a CSV"
+msgstr "Converter XML en CSV"
 
 #: public/templates/form.php:14
 msgid "Convert CSV to XML"
-msgstr "Convertir CSV a XML"
+msgstr "Converter CSV en XML"
 
 #: public/templates/form.php:26
 msgid ""
 "Convert a XML file downloaded from WordPress export option and convert it to "
 "CSV to edit with Google Spreadsheets, Excel, Libre Office Calc or similar."
 msgstr ""
-"Convierte un archivo XML descargado de la opción de exportación de WordPress "
-"y lo convierte a CSV para editarlo con hojas de cálculo de Google, Excel, "
-"Libre, Office Calc o similar."
+"Converte un ficheiro XML descargado da opción de exportación de WordPress e "
+"convérteo en CSV para editar con Google Spreadsheets, Excel, Libre Office "
+"Calc ou similar."
 
 #: public/templates/form.php:29
 msgid "Choose an XML file:"
-msgstr "Selecciona un archivo XML:"
+msgstr "Escolle un ficheiro XML:"
 
 #: public/templates/form.php:34
 msgid "Export to CSV"
-msgstr "Exportar a CSV"
+msgstr "Exportación a CSV"
 
 #: public/templates/form.php:47
 msgid ""
 "Convert a CSV from Google Spreadsheets, Excel, Libre Office Calc or similar "
 "to import in WordPress."
 msgstr ""
-"Convierte un CSV de hojas de cálculo de Google, Excel, Libre Office Calc o "
-"similar para importarlo en WordPress."
+"Fai a conversións dun CSV de Google Spreadsheets, Excel, Libre Office Calc "
+"ou similar para importar en WordPress."
 
 #: public/templates/form.php:50
 msgid "Choose an CSV file:"
-msgstr "Selecciona un archivo CSV:"
+msgstr "Escolle un ficheiro CSV:"
 
 #: public/templates/form.php:55
 msgid "Export to XML"
-msgstr "Exportar a XML"
+msgstr "Exportación a XML"
 
 #. Plugin Name of the plugin/theme
 msgid "Camptix XML CSV"
@@ -153,14 +153,14 @@ msgid ""
 "CSV to XML. Based on idea and script from Pascal Casier (https://github.com/"
 "ePascalC)."
 msgstr ""
-"Un plugin para convertir los archivos XML cargados a formato CSV y viceversa "
-"de CSV a XML. Basado en la idea y el script de Pascal Casier (https://github."
-"com/ePascalC)."
+"Un plugin para converter os ficheiros XML cargados en formato CSV e de novo "
+"de CSV a XML. Baseado na idea e script de Pascal Casier (https://github.com/"
+"ePascalC)."
 
 #. Author of the plugin/theme
 msgid "Carlos Longarela <carlos@longarela.eu>, WordCamp Europe"
-msgstr "Carlos Longarela <carlos@longarela.eu>, WordCamp Europa"
+msgstr "Carlos Longarela <carlos@longarela.eu>, WordCamp Europe"
 
 #. Author URI of the plugin/theme
 msgid "https://tabernawp.com/"
-msgstr "https://tabernawp.com/"
+msgstr "https://tabernawp.com"

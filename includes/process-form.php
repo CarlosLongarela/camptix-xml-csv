@@ -43,11 +43,11 @@ if ( $convert_2_csv ) {
 	if ( false !== $data_type ) {
 		$csv_data = $converter->convert_2_csv( $data_type );
 		$csv_link = $converter->write_csv( $csv_data, $data_type );
-		echo '<div class="camptix-success">' . esc_html__( 'CSV file created successfully:', 'camptix-xml-csv' ) . ' ';
-		echo '<a href="' . esc_url( CAMPTIX_XML_CSV_UPLOAD_URL . $csv_link ) . '" download>' . esc_html__( 'Download CSV file', 'camptix-xml-csv' ) . '</a></div>';
+		echo '<div id="camptix-msg" class="camptix-success">' . esc_html__( 'CSV file created successfully:', 'camptix-xml-csv' ) . ' ';
+		echo '<a href="' . esc_url( CAMPTIX_XML_CSV_UPLOAD_URL . $csv_link ) . '" download>' . esc_html__( 'Download CSV file', 'camptix-xml-csv' ) . '</a> <em>(' . esc_attr( $csv_link ) . ')</em></div>';
 	} else {
 		$res = new WP_Error( 'File type no XML', __( 'Please select a valid data type.', 'camptix-xml-csv' ) );
-		echo '<div class="camptix-error">' . esc_html( $res->get_error_message() ) . '</div>';
+		echo '<div id="camptix-msg" class="camptix-error">' . esc_html( $res->get_error_message() ) . '</div>';
 	}
 }
 
@@ -63,10 +63,10 @@ if ( $convert_2_xml ) {
 	if ( false !== $data_type ) {
 		$xml_data = $converter->convert_2_xml( $csv_file, $data_type );
 		$xml_link = $converter->write_xml( $xml_data, $data_type );
-		echo '<div class="camptix-success">' . esc_html__( 'XML file created successfully:', 'camptix-xml-csv' ) . ' ';
-		echo '<a href="' . esc_url( CAMPTIX_XML_CSV_UPLOAD_URL . $xml_link ) . '" download>' . esc_html__( 'Download XML file', 'camptix-xml-csv' ) . '</a></div>';
+		echo '<div id="camptix-msg" class="camptix-success">' . esc_html__( 'XML file created successfully:', 'camptix-xml-csv' ) . ' ';
+		echo '<a href="' . esc_url( CAMPTIX_XML_CSV_UPLOAD_URL . $xml_link ) . '" download>' . esc_html__( 'Download XML file', 'camptix-xml-csv' ) . '</a> <em>(' . esc_attr( $xml_link ) . ')</em></div>';
 	} else {
 		$res = new WP_Error( 'CSV file name incorrect', __( 'Please select a valid CSV file. Check plugin README for valid names.', 'camptix-xml-csv' ) );
-		echo '<div class="camptix-error">' . esc_html( $res->get_error_message() ) . '</div>';
+		echo '<div id="camptix-msg" class="camptix-error">' . esc_html( $res->get_error_message() ) . '</div>';
 	}
 }

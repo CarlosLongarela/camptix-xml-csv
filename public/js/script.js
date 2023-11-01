@@ -9,13 +9,22 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		form_camptix_xml_csv.classList.add( 'camptix-hidden' );
 	}
 
+	function remove_message() {
+		const msg = document.getElementById( 'camptix-msg' );
+		if ( msg ) {
+			msg.remove();
+		}
+	}
+
 	btn_convert_xml_2_csv.addEventListener( 'click', function() {
 		hide_forms();
+		remove_message();
 		form_camptix_xml_csv.classList.remove( 'camptix-hidden' );
 	} );
 
 	btn_convert_csv_2_xml.addEventListener( 'click', function() {
 		hide_forms();
+		remove_message();
 		form_camptix_csv_xml.classList.remove( 'camptix-hidden' );
 	} );
 

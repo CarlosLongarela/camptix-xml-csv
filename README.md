@@ -12,7 +12,9 @@ If you prefer to maintain it private, protect the post with a password or make i
 
 **NOTE:**
 
-* Do not change the exported filename because the system will detect the type of CPT (`wcb_organizer`, `wcb_speaker`, `wcb_session`, `wcb_volunteer`, `wcb_sponsor`) based on the file name portion. For example: camptix-**wcb_organizer**-2023-11-01.csv
+* Do not change the CSV exported filename because the system will detect the type of CPT (`wcb_organizer`, `wcb_speaker`, `wcb_session`, `wcb_volunteer`, `wcb_sponsor`) based on the file name portion. For example: camptix-**wcb_organizer**-2023-11-01.csv
+
+* If you have a sponsor CSV file like `camptix-wcb_sponsor-2023-11-01.csv` and you rename it to something like `camptix-wcb_volunteer-2023-11-01.csv`, converting to WXR will be erroneous because field data do not correspond with that CPT.
 
 * Do not change CSV fields order or re-convert to XML will produce wrong data.
 
