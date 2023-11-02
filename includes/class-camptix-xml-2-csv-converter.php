@@ -122,13 +122,15 @@ class Camptix_XML_2_CSV_Converter {
 
 		switch ( $data_type ) {
 			case 'wcb_organizer':
-				$title     = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;
-				$content   = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
-				$excerpt   = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
-				$post_name = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
+				$title        = $item->getElementsByTagName( 'title' )->item( 0 )->nodeValue;
+				$content      = $item->getElementsByTagNameNS( $this->ns_content, 'encoded' )->item( 0 )->nodeValue;
+				$excerpt      = $item->getElementsByTagNameNS( $this->ns_excerpt, 'encoded' )->item( 0 )->nodeValue;
+				$post_name    = $item->getElementsByTagNameNS( $this->ns_wp, 'post_name' )->item( 0 )->nodeValue;
+				$wp_user_name = $this->get_post_meta( '_wcpt_user_name', $item );
+				$is_first     = $this->get_post_meta( '_wcb_organizer_first_time', $item );
 
 				// Add CSV row.
-				$csv_data = array( $title, $content, $excerpt, $post_name );
+				$csv_data = array( $title, $content, $excerpt, $post_name, $wp_user_name, $is_first );
 				break;
 			case 'wcb_speaker':
 				$speaker_id   = $item->getElementsByTagNameNS( $this->ns_wp, 'post_id' )->item( 0 )->nodeValue;
