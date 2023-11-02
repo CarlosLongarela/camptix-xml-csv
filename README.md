@@ -26,7 +26,7 @@ If you prefer to maintain it private, protect the post with a password or make i
 
 CSV headers are defined in `trait-camptix-common.php` file and are:
 
-* CPT wcb_organizer: `'Title', 'Content', 'Excerpt', 'Post Name'`
+* CPT wcb_organizer: `'Title', 'Content', 'Excerpt', 'Post Name', 'WP User Name', 'Is First Time'`
 
 * CPT wcb_speaker: `'Speaker ID', 'Title', 'Content', 'Excerpt', 'Post Name', 'User Email', 'WP User Name', 'Is First Time'`
 
