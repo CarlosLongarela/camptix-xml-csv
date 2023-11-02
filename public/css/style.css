@@ -3,6 +3,7 @@
  */
 
 .camptix-wceu-btns {
+	margin-block: 1rem;
 	justify-content: center;
 }
 
@@ -16,6 +17,7 @@
 }
 
 .camptix_form_text {
+	width: 100%;
 	font-size: 90%;
 }
 
