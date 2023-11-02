@@ -92,6 +92,28 @@ class Camptix_CSV_2_XML_Converter {
 		$post_name->appendChild( $post_name_text );
 		$item->appendChild( $post_name );
 
+		$postmeta  = $this->dom_document->createElement( 'wp:postmeta' );
+		$meta_key  = $this->dom_document->createElement( 'wp:meta_key' );
+		$cdata_key = $this->dom_document->createCDATASection( '_wcpt_user_name' );
+		$meta_key->appendChild( $cdata_key );
+		$meta_value  = $this->dom_document->createElement( 'wp:meta_value' );
+		$cdata_value = $this->dom_document->createCDATASection( $data[4] );
+		$meta_value->appendChild( $cdata_value );
+		$postmeta->appendChild( $meta_key );
+		$postmeta->appendChild( $meta_value );
+		$item->appendChild( $postmeta );
+
+		$postmeta_2  = $this->dom_document->createElement( 'wp:postmeta' );
+		$meta_key_2  = $this->dom_document->createElement( 'wp:meta_key' );
+		$cdata_key_2 = $this->dom_document->createCDATASection( '_wcb_organizer_first_time' );
+		$meta_key_2->appendChild( $cdata_key_2 );
+		$meta_value_2 = $this->dom_document->createElement( 'wp:meta_value' );
+		$cdata_value  = $this->dom_document->createCDATASection( $data[5] );
+		$meta_value_2->appendChild( $cdata_value );
+		$postmeta_2->appendChild( $meta_key_2 );
+		$postmeta_2->appendChild( $meta_value_2 );
+		$item->appendChild( $postmeta_2 );
+
 		$channel_node->appendChild( $item );
 	}
 
