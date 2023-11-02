@@ -3,7 +3,7 @@
  * Plugin Name: Camptix XML CSV
  * Plugin URI: https://europe.wordcamp.org/
  * Description: A plugin to converts uploaded XML files to CSV format and back again from CSV to XML. Based on idea and script from Pascal Casier (https://github.com/ePascalC).
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Carlos Longarela <carlos@longarela.eu>, WordCamp Europe
  * Author URI: https://tabernawp.com/
  * License: GPL2
@@ -22,7 +22,7 @@ define( 'CAMPTIX_XML_CSV_URL', plugin_dir_url( __FILE__ ) );
 $upload_dir = wp_upload_dir();
 define( 'CAMPTIX_XML_CSV_UPLOAD_DIR', $upload_dir['basedir'] . '/camptix-xml-csv/' );
 define( 'CAMPTIX_XML_CSV_UPLOAD_URL', $upload_dir['baseurl'] . '/camptix-xml-csv/' );
-define( 'CAMPTIX_XML_CSV_VERSION', '1.0.0' );
+define( 'CAMPTIX_XML_CSV_VERSION', '1.0.1' );
 
 /**
  * Load the plugin textdomain.
@@ -71,7 +71,7 @@ function delete_files() {
 function camptix_xml_csv_shortcode() {
 	// Enqueue the CSS and JS files only when shortcode is used.
 	wp_enqueue_style( 'camptix-xml-csv-style', CAMPTIX_XML_CSV_URL . 'public/css/style.css' );
-	wp_enqueue_script( 'camptix-xml-csv-script', CAMPTIX_XML_CSV_URL . 'public/js/script.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'camptix-xml-csv-script', CAMPTIX_XML_CSV_URL . 'public/js/script.js', array(), CAMPTIX_XML_CSV_VERSION, true );
 
 	create_custom_plugin_dir(); // Checks that plugin custom folder exists or create it.
 	delete_files(); // Delete all CSV and XML files from plugin custom folder.
