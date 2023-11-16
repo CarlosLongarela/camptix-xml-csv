@@ -91,6 +91,40 @@ function camptix_xml_csv_shortcode() {
 add_shortcode( 'camptix_xml_csv', 'camptix_xml_csv_shortcode' );
 
 /**
+ * Function to handle the form submission and display the CSV data from API.
+ */
+function camptix_api_csv_shortcode() {
+	// Enqueue the CSS and JS files only when shortcode is used.
+	wp_enqueue_style( 'camptix-xml-csv-style', CAMPTIX_XML_CSV_URL . 'public/css/style.css' );
+	wp_enqueue_script( 'camptix-xml-csv-script', CAMPTIX_XML_CSV_URL . 'public/js/script-api.js', array(), CAMPTIX_XML_CSV_VERSION, true );
+
+	// Localize the script with translated strings.
+	wp_localize_script(
+		'camptix-xml-csv-script',
+		'camptix_xml_csv_i18n',
+		array(
+			'https'      => __( 'The URL must begin with "https://".', 'camptix-xml-csv' ),
+			'no_wp_json' => __( 'The URL must not contain "wp-json".', 'camptix-xml-csv' ),
+		)
+	);
+
+	create_custom_plugin_dir(); // Checks that plugin custom folder exists or create it.
+	delete_files(); // Delete all CSV and XML files from plugin custom folder.
+
+	ob_start();
+
+	include CAMPTIX_XML_CSV_DIR . 'public/templates/form-api.php';
+
+	// Check if the form was submitted.
+	if ( isset( $_POST['file_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		include CAMPTIX_XML_CSV_DIR . 'includes/process-form-api.php';
+	}
+
+	return ob_get_clean();
+}
+add_shortcode( 'camptix_api_csv', 'camptix_api_csv_shortcode' );
+
+/**
  * Function to handle the AJAX request to load the form to convert XML to CSV.
  */
 function load_xml_2_csv_form() {
