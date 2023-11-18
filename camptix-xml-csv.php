@@ -2,11 +2,11 @@
 /**
  * Plugin Name: Camptix XML CSV
  * Plugin URI: https://europe.wordcamp.org/
- * Description: A plugin to converts uploaded XML files to CSV format and back again from CSV to XML. Based on idea and script from Pascal Casier (https://github.com/ePascalC).
+ * Description: Converts uploaded XML files to CSV format and back again from CSV to XML. Based on idea and script from Pascal Casier (https://github.com/ePascalC).
  * Version: 1.0.1
  * Author: Carlos Longarela <carlos@longarela.eu>, WordCamp Europe
  * Author URI: https://tabernawp.com/
- * License: GPL2
+ * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: camptix-xml-csv
  * Domain Path: /languages
