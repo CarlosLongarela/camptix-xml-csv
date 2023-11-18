@@ -80,7 +80,7 @@ function camptix_xml_csv_shortcode() {
 
 	include CAMPTIX_XML_CSV_DIR . 'public/templates/form.php';
 
-	// Check if the form was submitted.
+	// Check if the form was submitted. Nonce verification in process-form.php file.
 	if ( isset( $_POST['file_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		include CAMPTIX_XML_CSV_DIR . 'includes/process-form.php';
 	}
@@ -115,7 +115,7 @@ function camptix_api_csv_shortcode() {
 
 	include CAMPTIX_XML_CSV_DIR . 'public/templates/form-api.php';
 
-	// Check if the form was submitted.
+	// Check if the form was submitted. Nonce verification in process-form-api.php file.
 	if ( isset( $_POST['file_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		include CAMPTIX_XML_CSV_DIR . 'includes/process-form-api.php';
 	}

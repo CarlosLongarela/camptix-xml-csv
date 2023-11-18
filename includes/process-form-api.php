@@ -6,7 +6,7 @@
  */
 
 // Check the nonce.
-if ( ! isset( $_POST['camptix_api_csv_nonce'] ) || ! wp_verify_nonce( $_POST['camptix_api_csv_nonce'], 'camptix_api_csv_nonce' ) ) {
+if ( ! isset( $_POST['camptix_api_csv_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['camptix_api_csv_nonce'] ) ), 'camptix_api_csv_nonce' ) ) {
 	wp_die( esc_html__( 'Security check failed.', 'camptix-xml-csv' ) );
 }
 
