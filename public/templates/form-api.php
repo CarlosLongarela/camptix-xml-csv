@@ -23,7 +23,7 @@
 				<option value="wcb_organizer"><?php esc_html_e( 'Organizers', 'camptix-xml-csv' ); ?></option>
 				<option value="wcb_speaker"><?php esc_html_e( 'Speakers', 'camptix-xml-csv' ); ?></option>
 				<option value="wcb_session"><?php esc_html_e( 'Sessions', 'camptix-xml-csv' ); ?></option>
-				<option value="wcb_volunteer"><?php esc_html_e( 'Volunteers', 'camptix-xml-csv' ); ?></option>
+				<option value="wcb_volunteer" disabled><?php esc_html_e( 'Volunteers', 'camptix-xml-csv' ); ?> (<?php esc_html_e( 'API route not available', 'camptix-xml-csv' ); ?>)</option>
 				<option value="wcb_sponsor"><?php esc_html_e( 'Sponsors', 'camptix-xml-csv' ); ?></option>
 			</select>
 		</div>
