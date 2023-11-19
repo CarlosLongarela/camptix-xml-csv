@@ -1,4 +1,6 @@
-# WordCamp plugin to convert exported XML to CSV and again to XML
+# WordCamp plugin to convert to CSV and again to XML
+
+## Shortcode for converting exported XML to CSV and again to XML
 
 You can export Speakers, Sessions, Sponsors, Organizers and Volunteers, from `WordPress admin, Tools -> Export` to obtain the WordPress eXtended RSS (WXR file) to convert to CSV.
 
@@ -6,11 +8,51 @@ With this CSV file, you can open it with [LibreOffice Calc](https://www.libreoff
 
 Thereafter, you can convert again this CSV to XML (WXR format) to import it to the WordCamp website.
 
-Use the shortcode `[camptix_xml_csv]` in the page or post where you'll like to show the converter. That's all.
+1. Place the shortcode `[camptix_xml_csv]` in the page or post where you'll like to show the converter.
+1. Click the button **Convert XML to CSV** or **Convert CSV to XML**
+1. Select the *XML* file for **Convert XML to CSV** or *CSV* file for **Convert CSV to XML**
+1. Click **Export to CSV** or **Export to XML**
+1. That's all.
 
 If you prefer to maintain it private, protect the post with a password or make it available only to admins (by example, with a page in draft mode).
 
-**NOTE:**
+## Shortcode for converting API JSON to CSV
+
+1. Place the shortcode `[camptix_api_csv]` in the page or post where you'll like to show the converter.
+1. Select API type to convert.
+1. Put the base URL (without the API part) like https://europe.wordcamp.org/2023/
+1. Click **Export to CSV**.
+1. That's all.
+
+If you prefer to maintain it private, protect the post with a password or make it available only to admins (by example, with a page in draft mode).
+
+API export is more limited than the WXR file method.
+
+With the API method, these fields would be empty:
+
+* **Organizers:**
+  * *Is First Time* --> will be an empty field.
+* **Speakers:**
+  * *Speaker ID* --> will be an empty field.
+  * *User Email* --> will be an empty field.
+  * *Is First Time* --> will be an empty field.
+* **Sessions:**
+  * *Track Nicename* -->  will be an empty field.
+* **Volunteers:**
+  * NOT AVAILABLE IN API
+* **Sponsors**
+  * *Company Name* -->  will be an empty field.
+  * *First Name* -->  will be an empty field.
+  * *Last Name* -->  will be an empty field.
+  * *Email Address* -->  will be an empty field.
+  * *Phone Number* -->  will be an empty field.
+  * *Street Address* -->  will be an empty field.
+  * *City* -->  will be an empty field.
+  * *State* -->  will be an empty field.
+  * *Zip Code* -->  will be an empty field.
+  * *Country* -->  will be an empty field.
+
+**NOTE *(for both shortcodes)*:**
 
 * Do not change the CSV exported filename because the system will detect the type of CPT (`wcb_organizer`, `wcb_speaker`, `wcb_session`, `wcb_volunteer`, `wcb_sponsor`) based on the file name portion. For example: camptix-**wcb_organizer**-2023-11-01.csv
 
@@ -22,7 +64,7 @@ If you prefer to maintain it private, protect the post with a password or make i
 
 * Make a backup or a full WXR export before any change.
 
-**CSV Data:**
+## CSV Data:
 
 CSV headers are defined in `trait-camptix-common.php` file and are:
 
