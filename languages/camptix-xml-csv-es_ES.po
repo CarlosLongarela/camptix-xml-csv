@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camptix XML CSV\n"
-"POT-Creation-Date: 2023-11-01 23:36+0100\n"
-"PO-Revision-Date: 2023-11-01 23:36+0100\n"
+"POT-Creation-Date: 2023-11-19 19:12+0100\n"
+"PO-Revision-Date: 2023-11-19 19:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -20,9 +20,60 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: includes/process-form.php:10
+#: camptix-xml-csv.php:106
+msgid "The URL must begin with \"https://\"."
+msgstr "La URL debe comenzar con \"https://\"."
+
+#: camptix-xml-csv.php:107
+msgid "The URL must not contain \"wp-json\"."
+msgstr "La URL no debe contener \"wp-json\"."
+
+#: includes/class-camptix-api-2-csv-converter.php:70
+msgid "Wrong API URL"
+msgstr "URL de API incorrecta"
+
+#: includes/class-camptix-api-2-csv-converter.php:70
+msgid "API URL it is not a valid URL"
+msgstr "URL de la API, no es una URL válida"
+
+#: includes/class-camptix-api-2-csv-converter.php:74
+msgid "Wrong data type"
+msgstr "Tipo de datos incorrecto"
+
+#: includes/class-camptix-api-2-csv-converter.php:74
+msgid "Data type it is not a valid data type"
+msgstr "Tipo de datos no es un tipo de datos válido"
+
+#: includes/class-camptix-api-2-csv-converter.php:104
+#: includes/class-camptix-api-2-csv-converter.php:108
+#: includes/class-camptix-api-2-csv-converter.php:125
+msgid "API Error"
+msgstr "Error de API"
+
+#: includes/class-camptix-api-2-csv-converter.php:104
+#: includes/class-camptix-api-2-csv-converter.php:125
+msgid "Error retrieving API data"
+msgstr "Error al recuperar datos de la API"
+
+#: includes/class-camptix-api-2-csv-converter.php:108
+msgid "Error retrieving API data, reponse different from 200"
+msgstr "Error al recuperar datos de API, respuesta diferente de 200"
+
+#: includes/process-form-api.php:10 includes/process-form.php:10
 msgid "Security check failed."
 msgstr "La comprobación de seguridad ha fallado."
+
+#: includes/process-form-api.php:25
+msgid "Error:"
+msgstr "Error:"
+
+#: includes/process-form-api.php:30 includes/process-form.php:46
+msgid "CSV file created successfully:"
+msgstr "Archivo CSV creado correctamente:"
+
+#: includes/process-form-api.php:31 includes/process-form.php:47
+msgid "Download CSV file"
+msgstr "Descargar archivo CSV"
 
 #: includes/process-form.php:20
 msgid "Please upload an XML file."
@@ -31,14 +82,6 @@ msgstr "Por favor, carga un archivo XML."
 #: includes/process-form.php:27
 msgid "Please upload an CSV file."
 msgstr "Por favor, carga un archivo CSV."
-
-#: includes/process-form.php:46
-msgid "CSV file created successfully:"
-msgstr "Archivo CSV creado correctamente:"
-
-#: includes/process-form.php:47
-msgid "Download CSV file"
-msgstr "Descargar archivo CSV"
 
 #: includes/process-form.php:49
 msgid "Please select a valid data type."
@@ -98,6 +141,50 @@ msgstr "Error de subida desconocida"
 msgid "File is not a uploaded file"
 msgstr "El archivo no es un archivo cargado"
 
+#: public/templates/form-api.php:18
+msgid ""
+"Convert a JSON API response to CSV to edit with Google Spreadsheets, Excel, "
+"Libre Office Calc or similar."
+msgstr ""
+"Convierte una respuesta de la API JSON a CSV para editarla con hojas de "
+"cálculo de Google, Excel, Libre, Office Calc o similares."
+
+#: public/templates/form-api.php:21
+msgid "Select the API type:"
+msgstr "Seleccione el tipo de API:"
+
+#: public/templates/form-api.php:23
+msgid "Organizers"
+msgstr "Organizadores"
+
+#: public/templates/form-api.php:24
+msgid "Speakers"
+msgstr "Ponentes"
+
+#: public/templates/form-api.php:25
+msgid "Sessions"
+msgstr "Sesiones"
+
+#: public/templates/form-api.php:26
+msgid "Volunteers"
+msgstr "Voluntarios"
+
+#: public/templates/form-api.php:26
+msgid "API route not available"
+msgstr "Ruta de API no disponible"
+
+#: public/templates/form-api.php:27
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
+#: public/templates/form-api.php:32
+msgid "Enter the API URL base (without the API part):"
+msgstr "Introduce la base de la URL de la API (sin la parte de la API):"
+
+#: public/templates/form-api.php:37 public/templates/form.php:34
+msgid "Export to CSV"
+msgstr "Exportar a CSV"
+
 #: public/templates/form.php:11
 msgid "Convert XML to CSV"
 msgstr "Convertir XML a CSV"
@@ -118,10 +205,6 @@ msgstr ""
 #: public/templates/form.php:29
 msgid "Choose an XML file:"
 msgstr "Selecciona un archivo XML:"
-
-#: public/templates/form.php:34
-msgid "Export to CSV"
-msgstr "Exportar a CSV"
 
 #: public/templates/form.php:47
 msgid ""
@@ -149,13 +232,11 @@ msgstr "https://europe.wordcamp.org/"
 
 #. Description of the plugin/theme
 msgid ""
-"A plugin to converts uploaded XML files to CSV format and back again from "
-"CSV to XML. Based on idea and script from Pascal Casier (https://github.com/"
-"ePascalC)."
+"Converts uploaded XML files to CSV format and back again from CSV to XML. "
+"Based on idea and script from Pascal Casier (https://github.com/ePascalC)."
 msgstr ""
-"Un plugin para convertir los archivos XML cargados a formato CSV y viceversa "
-"de CSV a XML. Basado en la idea y el script de Pascal Casier (https://github."
-"com/ePascalC)."
+"Convierte los archivos XML cargados a formato CSV y viceversa de CSV a XML. "
+"Basado en la idea y el script de Pascal Casier (https://github.com/ePascalC)."
 
 #. Author of the plugin/theme
 msgid "Carlos Longarela <carlos@longarela.eu>, WordCamp Europe"
