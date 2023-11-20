@@ -70,7 +70,7 @@ function delete_files() {
  */
 function camptix_xml_csv_shortcode() {
 	// Enqueue the CSS and JS files only when shortcode is used.
-	wp_enqueue_style( 'camptix-xml-csv-style', CAMPTIX_XML_CSV_URL . 'public/css/style.css' );
+	wp_enqueue_style( 'camptix-xml-csv-style', CAMPTIX_XML_CSV_URL . 'public/css/style.css', array(), CAMPTIX_XML_CSV_VERSION );
 	wp_enqueue_script( 'camptix-xml-csv-script', CAMPTIX_XML_CSV_URL . 'public/js/script.js', array(), CAMPTIX_XML_CSV_VERSION, true );
 
 	create_custom_plugin_dir(); // Checks that plugin custom folder exists or create it.
@@ -95,7 +95,7 @@ add_shortcode( 'camptix_xml_csv', 'camptix_xml_csv_shortcode' );
  */
 function camptix_api_csv_shortcode() {
 	// Enqueue the CSS and JS files only when shortcode is used.
-	wp_enqueue_style( 'camptix-xml-csv-style', CAMPTIX_XML_CSV_URL . 'public/css/style.css' );
+	wp_enqueue_style( 'camptix-xml-csv-style', CAMPTIX_XML_CSV_URL . 'public/css/style.css', array(), CAMPTIX_XML_CSV_VERSION );
 	wp_enqueue_script( 'camptix-xml-csv-script', CAMPTIX_XML_CSV_URL . 'public/js/script-api.js', array(), CAMPTIX_XML_CSV_VERSION, true );
 
 	// Localize the script with translated strings.

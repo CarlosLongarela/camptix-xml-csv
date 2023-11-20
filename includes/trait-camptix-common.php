@@ -149,7 +149,7 @@ trait Camptix_Common {
 			return new WP_Error( 'Filesystem error', __( 'File is not a uploaded file', 'camptix-xml-csv' ) );
 		}
 
-		if ( UPLOAD_ERR_OK === $file['error'] && move_uploaded_file( $file['tmp_name'], $dest_file_name ) ) {
+		if ( UPLOAD_ERR_OK === $file['error'] && move_uploaded_file( $file['tmp_name'], $dest_file_name ) ) { // phpcs:ignore
 			return $dest_file_name;
 		} else {
 			return new WP_Error( 'File upload error', $this->upload_error( $file['error'] ) );
