@@ -558,7 +558,7 @@ class Camptix_CSV_2_XML_Converter {
 		$csv_data   = fopen( $csv_file, 'r' ); // phpcs:ignore
 
 		if ( false !== ( $csv_data ) ) {
-			while ( false !== ( $data = fgetcsv( $csv_data ) ) ) {
+			while ( false !== ( $data = fgetcsv( $csv_data ) ) ) { // phpcs:ignore
 				++$row_number;
 
 				// First row is CSV headers.
