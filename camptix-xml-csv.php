@@ -78,11 +78,11 @@ function camptix_xml_csv_shortcode() {
 
 	ob_start();
 
-	include CAMPTIX_XML_CSV_DIR . 'public/templates/form.php';
+	include_once CAMPTIX_XML_CSV_DIR . 'public/templates/form.php';
 
 	// Check if the form was submitted. Nonce verification in process-form.php file.
 	if ( isset( $_POST['file_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		include CAMPTIX_XML_CSV_DIR . 'includes/process-form.php';
+		include_once CAMPTIX_XML_CSV_DIR . 'includes/process-form.php';
 	}
 
 	return ob_get_clean();
@@ -113,11 +113,11 @@ function camptix_api_csv_shortcode() {
 
 	ob_start();
 
-	include CAMPTIX_XML_CSV_DIR . 'public/templates/form-api.php';
+	include_once CAMPTIX_XML_CSV_DIR . 'public/templates/form-api.php';
 
 	// Check if the form was submitted. Nonce verification in process-form-api.php file.
 	if ( isset( $_POST['file_type'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		include CAMPTIX_XML_CSV_DIR . 'includes/process-form-api.php';
+		include_once CAMPTIX_XML_CSV_DIR . 'includes/process-form-api.php';
 	}
 
 	return ob_get_clean();
@@ -128,7 +128,7 @@ add_shortcode( 'camptix_api_csv', 'camptix_api_csv_shortcode' );
  * Function to handle the AJAX request to load the form to convert XML to CSV.
  */
 function load_xml_2_csv_form() {
-	include CAMPTIX_XML_CSV_DIR . 'public/templates/form-xml-2-csv.php';
+	include_once CAMPTIX_XML_CSV_DIR . 'public/templates/form-xml-2-csv.php';
 
 	wp_die();
 }
@@ -139,7 +139,7 @@ add_action( 'wp_ajax_nopriv_load_xml_2_csv_form', 'load_xml_2_csv_form' );
  * Function to handle the AJAX request to load the form to convert CSV to XML.
  */
 function load_csv_2_xml_form() {
-	include CAMPTIX_XML_CSV_DIR . 'public/templates/form-csv-2-xml.php';
+	include_once CAMPTIX_XML_CSV_DIR . 'public/templates/form-csv-2-xml.php';
 
 	wp_die();
 }
