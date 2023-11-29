@@ -26,5 +26,9 @@
       "titleBar.inactiveForeground": "#e7e7e799"
     },
     "editor.inlineSuggest.showToolbar": "onHover",
+    "sonarlint.connectedMode.project": {
+      "connectionId": "carloslongarela",
+      "projectKey": "CarlosLongarela_camptix-xml-csv"
+    },
 
 }
